@@ -74,7 +74,6 @@ export class Hill {
             prevCx = cx;
             prevCy = cy;
         }
-        console.log(prev.x, prev.y);
         ctx.lineTo(prev.x, prev.y);
         ctx.lineTo(this.stageWidth, this.stageHeight);
         ctx.lineTo(this.points[0].x, this.stageHeight);
