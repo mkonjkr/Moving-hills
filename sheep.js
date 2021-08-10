@@ -1,0 +1,88 @@
+export class Sheep {
+    constructor(img, stageWidth) {
+        this.img = img;
+
+        // 양 그림이 8 프레임이
+        this.totalFrame = 8;
+        // 현재 프레임을 0으로 정의
+        this.curFrame = 0;
+
+        // 이미지 크기는 양 그림 한장의 가로 세로
+        this.imgWidth = 360;
+        this.imgHeight = 300;
+
+        // 그려질 양의 크기는 레티나 디스플레이를 감안해서 절반 사이즈로
+        this.sheepWidth = 180;
+        this.sheepHeight = 150;
+
+        this.sheepWidthHalf = this.sheepWidth / 2;
+        this.x = stageWidth + this.sheepWidth;
+        this.y = 0;
+        // 속도 랜덤 정의
+        this.speed = Math.random() * 2 + 1;
+
+        // fps를 어도비 애니메이터에서 그린 24로 똑같이
+        this.fps = 24;
+        this.fpsTime = 1000 / this.fps;
+    }
+
+    draw(ctx, t, dots) {
+
+        if (!this.time) {
+            this.time = t;
+        }
+
+        // 매번 프레임을 증가시키는게 아니라 fps시간과 비교해서
+        // 그 시간에 도달했을때만 프레임 증가
+        // 프레임을 증가 시키는 속도를 시간에 맞춰서
+        // 이 코드 지우면 양 빠름
+        const now = t - this.time;
+        if (now > this.fpsTime) {
+            this.time = t;
+             //현재 프레임 증가
+             this.curFrame += 1;
+             // 현재 프레임이 토탈 프레임보다 커지면 안되니가 리셋
+             if (this.curFrame == this.totalFrame) {
+                 this.curFrame = 0;
+                }
+            }
+
+        this.animate(ctx, dots);
+    }
+
+    animate(ctx, dots) {
+        // 하단 중앙을 중심정으로 하기 위해서
+        
+        this.x -= this.speed;
+        this.y = 550;
+
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.fillStyle = '#000000';
+
+        //양 그리기
+        ctx.drawImage(
+            this.img,
+            this.imgWidth * this.curFrame,
+            0,
+            this.imgWidth,
+            this.imgHeight,
+            -this.sheepWidthHalf,
+            -this.sheepHeight-50,
+            this.sheepWidth,
+            this.sheepHeight
+        );
+        // 네모 사각형 그리기
+        /* ctx.fillRect(
+            // x를 -양의 절반 
+            -this.sheepWidthHalf,
+            // y를 -양의 높이 +20은 그림에서 생기는 영역만큼 더한값
+            -this.sheepHeight,
+            // 양의 크기만큼 넓이와 높이 지정
+            this.sheepWidth,
+            this.sheepHeight
+        ); */
+        // restore해서 저장했던 캔버스를 복귀
+        ctx.restore();
+    }
+}
