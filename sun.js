@@ -56,6 +56,7 @@ export class Sun {
         }
     }
 
+    
     ranInt(max) {
         return Math.random() * max;
     }
