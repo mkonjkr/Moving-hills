@@ -1,8 +1,11 @@
 export class Sun {
     constructor() {
+        // Set Radius
         this.radius = 150;
 
+        // Slide of Sun
         this.total = 60;
+
         this.gap = 1 / this.total;
         this.originPos = [];
         this.pos = [];
@@ -12,6 +15,7 @@ export class Sun {
             this.pos[i] = pos;
         }
 
+        // Fps setting
         this.fps = 30;
         this.fpsTime = 1000 / this.fps;
     }
