@@ -31,6 +31,7 @@ export class Hill {
         let cur = this.points[0];
         let prev = cur;
 
+        
         //양의 좌표 위해서 점 위치 배열 저장
         let dots = [];
         // hills speed
