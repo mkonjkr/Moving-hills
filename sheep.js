@@ -65,8 +65,6 @@ export class Sheep {
         ctx.translate(this.x, this.y);
         ctx.rotate(closest.rotation);
 
-        //ctx.fillStyle = '#000000';
-
         //양 그리기
         ctx.drawImage(
             this.img,
