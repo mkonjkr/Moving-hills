@@ -46,7 +46,6 @@ export class Sun {
             const pos = this.pos[i];
             ctx.lineTo(pos.x + this.x, pos.y + this.y);
         }
-        /* ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);*/
         ctx.fill();
     }
 
@@ -59,7 +58,6 @@ export class Sun {
             }
         }
     }
-
     
     ranInt(max) {
         return Math.random() * max;

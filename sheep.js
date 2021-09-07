@@ -97,7 +97,6 @@ export class Sheep {
                 return this.getY2(x, dots[i]);
             }
         }
-
         return {
             y: 0,
             rotation: 0
